@@ -14,13 +14,13 @@
 
 using namespace std;
 
-void printTree(node *tree, int depth) {
+void traverseTree(node *tree, int depth) {
     if (tree == NULL) {
         return;
     }
     else {
         for (int i = 0; i <= depth; i++) {
-            cout << "  ";
+       //     cout << "  ";
         }
         depth++;
         
@@ -40,16 +40,16 @@ void printTree(node *tree, int depth) {
         cout << endl;
         
         if(tree->child1 != NULL){
-            printTree(tree->child1, depth);
+            traverseTree(tree->child1, depth);
         }
         if(tree->child2 != NULL){
-            printTree(tree->child2, depth);
+            traverseTree(tree->child2, depth);
         }
         if(tree->child3 != NULL){
-            printTree(tree->child3, depth);
+            traverseTree(tree->child3, depth);
         }
         if(tree->child4 != NULL){
-            printTree(tree->child4, depth);
+            traverseTree(tree->child4, depth);
         }
     }
 }

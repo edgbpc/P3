@@ -73,7 +73,7 @@ int main(int argc, const char * argv[]) {
       tree = myParser.parser();
             
  }
-    printTree(tree, 0);
+    traverseTree(tree, 0);
     
     fileToRead.close();
     

@@ -14,6 +14,7 @@
 		C34576F2226FF9B000BBF5DD /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C34576E8226FF9B000BBF5DD /* parser.cpp */; };
 		C34576F3226FF9B000BBF5DD /* testTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C34576EA226FF9B000BBF5DD /* testTree.cpp */; };
 		C34576F4226FF9B000BBF5DD /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C34576EC226FF9B000BBF5DD /* tree.cpp */; };
+		C34576F7226FFC1A00BBF5DD /* statSem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C34576F5226FFC1A00BBF5DD /* statSem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,8 @@
 		C34576EC226FF9B000BBF5DD /* tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
 		C34576ED226FF9B000BBF5DD /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
 		C34576EE226FF9B000BBF5DD /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		C34576F5226FFC1A00BBF5DD /* statSem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statSem.cpp; sourceTree = "<group>"; };
+		C34576F6226FFC1A00BBF5DD /* statSem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = statSem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				C34576EC226FF9B000BBF5DD /* tree.cpp */,
 				C34576ED226FF9B000BBF5DD /* tree.h */,
 				C34576D3226FF94D00BBF5DD /* main.cpp */,
+				C34576F5226FFC1A00BBF5DD /* statSem.cpp */,
+				C34576F6226FFC1A00BBF5DD /* statSem.h */,
 			);
 			path = P3;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				C34576F0226FF9B000BBF5DD /* testScanner.cpp in Sources */,
 				C34576F3226FF9B000BBF5DD /* testTree.cpp in Sources */,
 				C34576F1226FF9B000BBF5DD /* scanner.cpp in Sources */,
+				C34576F7226FFC1A00BBF5DD /* statSem.cpp in Sources */,
 				C34576D4226FF94D00BBF5DD /* main.cpp in Sources */,
 				C34576F4226FF9B000BBF5DD /* tree.cpp in Sources */,
 			);

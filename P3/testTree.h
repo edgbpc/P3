@@ -11,6 +11,6 @@
 
 #include "node.h"
 
-void printTree(node *root, int depth);
+void traverseTree(node *root, int depth);
 
 #endif /* testTree_h */
