@@ -24,6 +24,7 @@ class StaticSemantics {
     private:
         void insert(string variable);
         bool verify(string variable);
+        void traverseTree(node *tree, int depth);
     
 
     

@@ -87,6 +87,7 @@
 		C34576D2226FF94D00BBF5DD /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				C34576F82270093100BBF5DD /* Previous Project Files */,
 				C34576DD226FF9AF00BBF5DD /* Makefile */,
 				C34576DB226FF9AF00BBF5DD /* node.h */,
 				C34576E8226FF9B000BBF5DD /* parser.cpp */,
@@ -101,18 +102,25 @@
 				C34576E6226FF9AF00BBF5DD /* test4.sp19 */,
 				C34576E2226FF9AF00BBF5DD /* test5.sp19 */,
 				C34576DC226FF9AF00BBF5DD /* test6.sp19 */,
-				C34576E3226FF9AF00BBF5DD /* testScanner.cpp */,
-				C34576E4226FF9AF00BBF5DD /* testScanner.h */,
-				C34576EA226FF9B000BBF5DD /* testTree.cpp */,
-				C34576DF226FF9AF00BBF5DD /* testTree.h */,
 				C34576EB226FF9B000BBF5DD /* token.h */,
-				C34576EC226FF9B000BBF5DD /* tree.cpp */,
-				C34576ED226FF9B000BBF5DD /* tree.h */,
 				C34576D3226FF94D00BBF5DD /* main.cpp */,
 				C34576F5226FFC1A00BBF5DD /* statSem.cpp */,
 				C34576F6226FFC1A00BBF5DD /* statSem.h */,
 			);
 			path = P3;
+			sourceTree = "<group>";
+		};
+		C34576F82270093100BBF5DD /* Previous Project Files */ = {
+			isa = PBXGroup;
+			children = (
+				C34576EC226FF9B000BBF5DD /* tree.cpp */,
+				C34576ED226FF9B000BBF5DD /* tree.h */,
+				C34576EA226FF9B000BBF5DD /* testTree.cpp */,
+				C34576DF226FF9AF00BBF5DD /* testTree.h */,
+				C34576E3226FF9AF00BBF5DD /* testScanner.cpp */,
+				C34576E4226FF9AF00BBF5DD /* testScanner.h */,
+			);
+			path = "Previous Project Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

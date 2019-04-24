@@ -14,7 +14,7 @@
 #include "token.h"
 #include "parser.h"
 #include "node.h"
-#include "testTree.h"
+
 
 using namespace std;
 
@@ -73,7 +73,7 @@ int main(int argc, const char * argv[]) {
       tree = myParser.parser();
             
  }
-    traverseTree(tree, 0);
+
     
     fileToRead.close();
     
