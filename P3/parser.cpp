@@ -57,7 +57,6 @@ node* Parser::program() {
     node->child2 = block();
     node->child3 = NULL;
     node->child4 = NULL;
-    
     return node;
     
     
