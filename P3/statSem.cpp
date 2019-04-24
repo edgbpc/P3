@@ -79,7 +79,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
     
     if (tree->nodeLabel != "vars"){
         if (tree->token1.tokenID == identifierToken && tree->token1.tokenInstance != ""){
-            if (DEVMode) cout << "Found :" << tree->token1.tokenInstance << "Checking if previously defined"<< endl;
+            if (DEVMode) cout << "Found: " << tree->token1.tokenInstance << ".  Checking if previously defined"<< endl;
             if (!verify(tree->token1.tokenInstance)){
                 cout << "Error: " << tree->token1.tokenInstance << " is not defined." << endl;
             } else {
