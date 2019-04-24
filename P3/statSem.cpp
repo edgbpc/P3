@@ -12,16 +12,22 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "statSem.h"
 #include "node.h"
 #include "token.h"
 
+
+int DEVMode = 1;
 
 
 //reference https://www.geeksforgeeks.org/vector-in-cpp-stl/
 
 
 using namespace std;
+
+vector<string> globalContainer;
 
 StaticSemantics::StaticSemantics(){
     
@@ -47,53 +53,62 @@ bool StaticSemantics::verify(string variable){
 
 
 void StaticSemantics::Run(node* tree){
+    traverseTree(tree, 0);
     
     
 }
 
 void StaticSemantics::traverseTree(node *tree, int depth) {
+    token_t token1;
+
+    
     if (tree == NULL) {
         return;
-    }
-    else {
-        for (int i = 0; i <= depth; i++) {
-            //     cout << "  ";
-        }
+    } else {
         depth++;
+    }
+    
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    
+ 
+    
+    if (tree->nodeLabel == "vars"){
+        if (DEVMode) cout << "Checking Ff Variable Exists In Scope" << endl;
         
-        cout << tree->nodeLabel;
-        
-        token_t token1 = tree -> token1;
-        token_t token2 = tree -> token2;
-        
-        if (tree->nodeLabel == "var"){
+        if (!verify(tree -> token1.tokenInstance)){
+            if (DEVMode) cout << "Variable did not exist, adding to container" << endl;
+            insert(tree-> token1.tokenInstance);
+            if (DEVMode) cout << globalContainer.back() << " added." << endl;
+        }
+             
+    }
+    
+    if (tree->nodeLabel != "vars"){
+        if (tree->token1.tokenID == identifierToken && tree->token1.tokenInstance != ""){
+            if (!verify(tree->token1.tokenInstance)){
+                cout << "Error: " << tree->token1.tokenInstance << " is not defined." << endl;
+            } else {
+                if (DEVMode) cout << tree->token1.tokenInstance << " was defined." << endl;
+            }
+        }
             
-        }
-        
-        //        if (token1.tokenInstance != "") {
-        //            cout << " Token 1: " << tokenTypes[token1.tokenID] << ", element: " << token1.tokenInstance << " ";
-        //        }
-        //        if (token2.tokenInstance != "") {
-        //            cout << " Token 2: " << tokenTypes[token2.tokenID] << ", element: " << token2.tokenInstance << " ";
-        //        }
-        //
-        
-        cout << endl;
-        
-        if(tree->child1 != NULL){
-            traverseTree(tree->child1, depth);
-        }
-        if(tree->child2 != NULL){
-            traverseTree(tree->child2, depth);
-        }
-        if(tree->child3 != NULL){
-            traverseTree(tree->child3, depth);
-        }
-        if(tree->child4 != NULL){
-            traverseTree(tree->child4, depth);
-        }
+    }
+    
+
+    if(tree->child1 != NULL){
+        traverseTree(tree->child1, depth);
+    }
+    if(tree->child2 != NULL){
+        traverseTree(tree->child2, depth);
+    }
+    if(tree->child3 != NULL){
+        traverseTree(tree->child3, depth);
+    }
+    if(tree->child4 != NULL){
+        traverseTree(tree->child4, depth);
     }
 }
+
 
 
 

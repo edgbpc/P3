@@ -14,12 +14,15 @@
 #include "token.h"
 #include "parser.h"
 #include "node.h"
+#include "statSem.h"
 
 
 using namespace std;
 
 ifstream fileToRead; //get the data to be processed
 Parser myParser;
+StaticSemantics statSem;
+
 
 int main(int argc, const char * argv[]) {
     ofstream fileToWrite;
@@ -73,7 +76,7 @@ int main(int argc, const char * argv[]) {
       tree = myParser.parser();
             
  }
-
+    statSem.Run(tree);
     
     fileToRead.close();
     

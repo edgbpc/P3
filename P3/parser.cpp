@@ -55,6 +55,8 @@ node* Parser::program() {
     
     node->child1 = vars();
     node->child2 = block();
+    node->child3 = NULL;
+    node->child4 = NULL;
     
     return node;
     
@@ -65,6 +67,8 @@ node* Parser::block() {
     if (receivedToken.tokenInstance == "void"){
         node->child1 = vars();
         node->child2 = stats();
+        node->child3 = NULL;
+        node->child4 = NULL;
         if (receivedToken.tokenInstance == "return"){
             tkScanner();
             return node;
@@ -75,7 +79,7 @@ node* Parser::block() {
         error("void");
     }
     tkScanner();
-    return node;
+    return NULL;
 }
 
 node* Parser::vars() {
@@ -91,6 +95,9 @@ node* Parser::vars() {
                 if (receivedToken.tokenID == digitToken) {
                     node->token2 = receivedToken;
                     node->child1 = vars();
+                    node->child2 = NULL;
+                    node->child3 = NULL;
+                    node->child4 = NULL;
                     return node;
                 } else {
                     error("digit");
@@ -105,7 +112,7 @@ node* Parser::vars() {
         return NULL;
         
     }
-    return node;
+    return NULL;
 }
 node*  Parser::expr() {
     node* node = getNode("expr");
@@ -114,13 +121,20 @@ node*  Parser::expr() {
         node->token1 = receivedToken;
         tkScanner();
         node->child2 = expr();
+        node->child3 = NULL;
+        node->child4 = NULL;
         return node;
     } else if (receivedToken.tokenInstance == "-") { //predict A-> A - <expr>
         node->token1 = receivedToken;
         tkScanner();
         node->child2 = expr();
+        node->child3 = NULL;
+        node->child4 = NULL;
         return node;
     } else {
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         return node;
     }
 }
@@ -128,8 +142,11 @@ node*  Parser::expr() {
 node*  Parser::A() {
     node* node = getNode("A");
     node->child1 = N();
+    node->child2 = NULL;
     if (receivedToken.tokenInstance == "/") {
-        node->child1 = A();
+        node->child2 = A();
+        node->child3 = NULL;
+        node->child4 = NULL;
         node->token1 = receivedToken;
         tkScanner();
         return node;
@@ -143,8 +160,11 @@ node*  Parser::A() {
 node*  Parser::N() {
     node* node = getNode("N");
     node->child1 = M();
+    node->child2 = NULL;
     if (receivedToken.tokenInstance == "*") {
-        node->child1 = N();
+        node->child2 = N();
+        node->child3 = NULL;
+        node->child4 = NULL;
         node->token1 = receivedToken;
         tkScanner();
         return node;
@@ -159,45 +179,64 @@ node*  Parser::M() {
         node->token1 = receivedToken;
         tkScanner();
         node->child1 = M();
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         return node;
     } else {              //predict M->R()
         node->child1 = R();
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         return node;
     }
-    return node;
-    
-    
 }
+
 node*  Parser::R() {
     node* node = getNode("R");
     if (receivedToken.tokenInstance == "(" ) {   // predict R-> ( <expr> )
         tkScanner();
         node->child1 = expr();
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         tkScanner();
         if (receivedToken.tokenInstance != ")") {
             error(")");
         }
        tkScanner();
+       return node;
     } else if (receivedToken.tokenID == identifierToken || receivedToken.tokenID == digitToken) {
         node->token1 = receivedToken;
+        node->child1 = NULL;
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         tkScanner();
         return node;
     } else if (receivedToken.tokenInstance == "*" || receivedToken.tokenInstance == "/" || receivedToken.tokenInstance == "%"){
         node->token1 = receivedToken;
+        node->child1 = NULL;
+        node->child2 = NULL;
+        node->child3 = NULL;
+        node->child4 = NULL;
         tkScanner();
         return node;
     } else {
         error("(, identifier, or digit");
     }
-    return node;
+    return NULL;
 }
 node*  Parser::stats() {
     node* node = getNode("stats");
     node->child1 = stat();
+
     if (receivedToken.tokenInstance != ";"){
         error(";");
     }
     node->child2 = mStat();
+    node->child3 = NULL;
+    node->child4 = NULL;
     return node;
     
     
@@ -209,6 +248,8 @@ node*  Parser::mStat() {
         node->child1 = stat();
         if (receivedToken.tokenInstance == ";") {
             node->child2 = mStat();
+            node->child3 = NULL;
+            node->child4 = NULL;
             return node;
         } else {
             error(";");
@@ -220,6 +261,9 @@ node*  Parser::mStat() {
 }
 node*  Parser::stat() {
     node* node = getNode("stat");
+    node->child2 = NULL;
+    node->child3 = NULL;
+    node->child4 = NULL;
     if (receivedToken.tokenInstance == "scan") {
         tkScanner();
         node->child1 = IN();
@@ -230,7 +274,7 @@ node*  Parser::stat() {
         return node;
     } else if (receivedToken.tokenInstance == "void") {
       //  tkScanner();
-        node->child2 = block();
+        node->child1 = block();
       //  tkScanner();
         return node;
     } else if (receivedToken.tokenInstance == "cond") {
@@ -261,7 +305,10 @@ node*  Parser::IN() {
     } else {
         error("identifier");
     }
-    
+    node->child1 = NULL;
+    node->child2 = NULL;
+    node->child3 = NULL;
+    node->child4 = NULL;
     return node;
 }
 
@@ -269,7 +316,9 @@ node*  Parser::IN() {
 node* Parser::OUT() {
     node* node = getNode("Out");
     node->child1 = expr();
-    
+    node->child2 = NULL;
+    node->child3 = NULL;
+    node->child4 = NULL;
     return node;
     
 }
@@ -313,6 +362,9 @@ node* Parser::loop() {
 }
 node* Parser::assign() {
     node* node = getNode("assign");
+    node->child2 = NULL;
+    node->child3 = NULL;
+    node->child4 = NULL;
     if (receivedToken.tokenID == identifierToken){
         tkScanner();
         if (receivedToken.tokenInstance == "=") {
@@ -328,6 +380,11 @@ node* Parser::assign() {
 }
 node* Parser::RO() {
     node* node = getNode("RO");
+
+    node->child1 = NULL;
+    node->child2 = NULL;
+    node->child3 = NULL;
+    node->child4 = NULL;
     // <   < >
     if (receivedToken.tokenInstance == "<"){
         node->token1 = receivedToken;
