@@ -73,7 +73,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
  
     
     if (tree->nodeLabel == "vars"){
-        if (DEVMode) cout << "Checking Ff Variable Exists In Scope" << endl;
+        if (DEVMode) cout << "Checking if Variable Exists In Scope" << endl;
         
         if (!verify(tree -> token1.tokenInstance)){
             if (DEVMode) cout << "Variable did not exist, adding to container" << endl;
