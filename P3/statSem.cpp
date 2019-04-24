@@ -12,8 +12,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <chrono>
-#include <thread>
 #include "statSem.h"
 #include "node.h"
 #include "token.h"
@@ -67,10 +65,6 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
     } else {
         depth++;
     }
-    
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    
- 
     
     if (tree->nodeLabel == "vars"){
         if (DEVMode) cout << "Checking if Variable Exists In Scope" << endl;
