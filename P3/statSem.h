@@ -10,6 +10,7 @@
 #define statSem_h
 
 #include <stdio.h>
+#include <vector>
 #include "node.h"
 
 
