@@ -1,11 +1,12 @@
 CC	= g++
 CFLAGS	= 
 
-TARGET1	= frontEnd
+TARGET1	= statSem
 OBJS1	= main.o
 OBJS2	= scanner.o
 OBJS3	= parser.o
-OBJS4 	= testTree.o
+OBJS4   = statSem.o
+
 CXXFLAGS = -std=c++11
 
 .SUFFIXES: .c .o
