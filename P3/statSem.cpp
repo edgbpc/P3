@@ -74,7 +74,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
             insert(tree-> token1.tokenInstance);
             if (DEVMODE) cout << globalContainer.back() << " added." << endl;
         } else {
-            cout << "Error: redefination of " << token1.tokenInstance << " aborting." << endl;
+            cout << "Error: redefination of " << tree-> token1.tokenInstance << " aborting." << endl;
             exit(EXIT_SUCCESS);
         }
              
