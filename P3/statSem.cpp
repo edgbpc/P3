@@ -53,6 +53,7 @@ bool StaticSemantics::verify(string variable){
 void StaticSemantics::Run(node* tree){
     traverseTree(tree, 0);
     
+    cout << "Success: Static Semantics." << endl;
     
 }
 
@@ -74,7 +75,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
             insert(tree-> token1.tokenInstance);
             if (DEVMODE) cout << globalContainer.back() << " added." << endl;
         } else {
-            cout << "Error: redefination of " << tree-> token1.tokenInstance << " aborting." << endl;
+            cout << "Error: redefination of " << tree-> token1.tokenInstance << ".  Exiting." << endl;
             exit(EXIT_SUCCESS);
         }
              
@@ -84,7 +85,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
         if (tree->token1.tokenID == identifierToken && tree->token1.tokenInstance != ""){
             if (DEVMODE) cout << "Found: " << tree->token1.tokenInstance << ".  Checking if previously defined"<< endl;
             if (!verify(tree->token1.tokenInstance)){
-                cout << "Error: " << tree->token1.tokenInstance << " is not defined." << endl;
+                cout << "Error: " << tree->token1.tokenInstance << " is not defined in this scope. Exiting." << endl;
                 exit(EXIT_SUCCESS);
             } else {
                 if (DEVMODE) cout << tree->token1.tokenInstance << " was defined." << endl;
@@ -94,15 +95,20 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
     }
     
 
+    if (DEVMODE) cout << "Checking child 1." << endl;
     if(tree->child1 != NULL){
         traverseTree(tree->child1, depth);
     }
+    if (DEVMODE) cout << "Checking child 1." << endl;
     if(tree->child2 != NULL){
+        
         traverseTree(tree->child2, depth);
     }
+    if (DEVMODE) cout << "Checking child 1." << endl;
     if(tree->child3 != NULL){
         traverseTree(tree->child3, depth);
     }
+    if (DEVMODE) cout << "Checking child 1." << endl;
     if(tree->child4 != NULL){
         traverseTree(tree->child4, depth);
     }
