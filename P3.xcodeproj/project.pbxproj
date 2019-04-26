@@ -30,6 +30,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3313A42227354F8002043C3 /* badtest2.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = badtest2.sp19; sourceTree = "<group>"; };
+		C3313A4322735515002043C3 /* badtest3.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = badtest3.sp19; sourceTree = "<group>"; };
+		C3313A4422735533002043C3 /* badtest4.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = badtest4.sp19; sourceTree = "<group>"; };
+		C3313A452273554F002043C3 /* badtest5.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = badtest5.sp19; sourceTree = "<group>"; };
+		C3313A4622735564002043C3 /* badtest6.sp19 */ = {isa = PBXFileReference; lastKnownFileType = text; path = badtest6.sp19; sourceTree = "<group>"; };
 		C34576D0226FF94D00BBF5DD /* P3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = P3; sourceTree = BUILT_PRODUCTS_DIR; };
 		C34576D3226FF94D00BBF5DD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C34576DA226FF9AF00BBF5DD /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
@@ -39,7 +44,7 @@
 		C34576DE226FF9AF00BBF5DD /* test1.sp19 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.sp19; sourceTree = "<group>"; };
 		C34576DF226FF9AF00BBF5DD /* testTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testTree.h; sourceTree = "<group>"; };
 		C34576E0226FF9AF00BBF5DD /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
-		C34576E1226FF9AF00BBF5DD /* test.sp19 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.sp19; sourceTree = "<group>"; };
+		C34576E1226FF9AF00BBF5DD /* badtest1.sp19 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = badtest1.sp19; sourceTree = "<group>"; };
 		C34576E2226FF9AF00BBF5DD /* test5.sp19 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test5.sp19; sourceTree = "<group>"; };
 		C34576E3226FF9AF00BBF5DD /* testScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testScanner.cpp; sourceTree = "<group>"; };
 		C34576E4226FF9AF00BBF5DD /* testScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testScanner.h; sourceTree = "<group>"; };
@@ -95,7 +100,6 @@
 				C34576EE226FF9B000BBF5DD /* README.txt */,
 				C34576E5226FF9AF00BBF5DD /* scanner.cpp */,
 				C34576DA226FF9AF00BBF5DD /* scanner.h */,
-				C34576E1226FF9AF00BBF5DD /* test.sp19 */,
 				C34576DE226FF9AF00BBF5DD /* test1.sp19 */,
 				C34576E9226FF9B000BBF5DD /* test2.sp19 */,
 				C34576E7226FF9AF00BBF5DD /* test3.sp19 */,
@@ -106,6 +110,12 @@
 				C34576D3226FF94D00BBF5DD /* main.cpp */,
 				C34576F5226FFC1A00BBF5DD /* statSem.cpp */,
 				C34576F6226FFC1A00BBF5DD /* statSem.h */,
+				C34576E1226FF9AF00BBF5DD /* badtest1.sp19 */,
+				C3313A42227354F8002043C3 /* badtest2.sp19 */,
+				C3313A4322735515002043C3 /* badtest3.sp19 */,
+				C3313A4422735533002043C3 /* badtest4.sp19 */,
+				C3313A452273554F002043C3 /* badtest5.sp19 */,
+				C3313A4622735564002043C3 /* badtest6.sp19 */,
 			);
 			path = P3;
 			sourceTree = "<group>";

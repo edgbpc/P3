@@ -17,7 +17,7 @@
 #include "token.h"
 
 
-int DEVMode = 1;
+const int DEVMODE = 1;
 
 
 //reference https://www.geeksforgeeks.org/vector-in-cpp-stl/
@@ -67,23 +67,26 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
     }
     
     if (tree->nodeLabel == "vars"){
-        if (DEVMode) cout << "Checking if Variable Exists In Scope" << endl;
+        if (DEVMODE) cout << "Checking if Variable Exists In Scope" << endl;
         
         if (!verify(tree -> token1.tokenInstance)){
-            if (DEVMode) cout << "Variable did not exist, adding to container" << endl;
+            if (DEVMODE) cout << "Variable did not exist, adding to container" << endl;
             insert(tree-> token1.tokenInstance);
-            if (DEVMode) cout << globalContainer.back() << " added." << endl;
+            if (DEVMODE) cout << globalContainer.back() << " added." << endl;
+        } else {
+            cout << "Error: redefination of " << token1.tokenInstance << " aborting." << endl;
+            exit(EXIT_SUCCESS);
         }
              
     }
     
     if (tree->nodeLabel != "vars"){
         if (tree->token1.tokenID == identifierToken && tree->token1.tokenInstance != ""){
-            if (DEVMode) cout << "Found: " << tree->token1.tokenInstance << ".  Checking if previously defined"<< endl;
+            if (DEVMODE) cout << "Found: " << tree->token1.tokenInstance << ".  Checking if previously defined"<< endl;
             if (!verify(tree->token1.tokenInstance)){
                 cout << "Error: " << tree->token1.tokenInstance << " is not defined." << endl;
             } else {
-                if (DEVMode) cout << tree->token1.tokenInstance << " was defined." << endl;
+                if (DEVMODE) cout << tree->token1.tokenInstance << " was defined." << endl;
             }
         }
             
