@@ -53,7 +53,7 @@ bool StaticSemantics::verify(string variable){
 void StaticSemantics::Run(node* tree){
     traverseTree(tree, 0);
     
-    cout << "Success: Static Semantics." << endl;
+    cout << "Static Semantics.  No Errors" << endl;
     
 }
 
