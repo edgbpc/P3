@@ -11,10 +11,14 @@
 
 #include <stdio.h>
 #include <vector>
+#include <stack>
 #include "node.h"
 
 
+using namespace std;
+
 extern vector<string> globalContainer;
+extern stack<string> localContainer;
 
 class StaticSemantics {
     
@@ -23,13 +27,10 @@ class StaticSemantics {
         void Run(node* tree);
     
     private:
-        void insert(string variable);
+        void insert(string variable, bool inBlock);
         bool verify(string variable);
         void traverseTree(node *tree, int depth);
-    
-
-    
-    
+        int find(string variable);
     
 };
 

@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 #include "statSem.h"
 #include "node.h"
 #include "token.h"
@@ -26,15 +27,58 @@ const int DEVMODE = 1;
 using namespace std;
 
 vector<string> globalContainer;
+stack<string> localContainer;
+
+bool inBlock = false;
+
 
 StaticSemantics::StaticSemantics(){
+//    localContainer.push("1");
+//    localContainer.push("2");
+//    localContainer.push("3");
+//    localContainer.push("4");
+//    localContainer.push("5");
     
+    //stack - 5, 4, 3, 2, 1
+}
+
+int StaticSemantics::find(string variable){
+    int localContainerSize = int(localContainer.size());
+    string tempContainer[localContainerSize];
+    int index;
+    bool found = false;
+    int result = -1;
+    
+    for (index = localContainerSize - 1; index >= 0; index--){
+        
+        if (localContainer.top() == variable) {
+            found = true;
+            result = index;
+            break;
+        } else {
+            tempContainer[index] = localContainer.top();
+            localContainer.pop();
+        }
+    }
+    
+    if (found) {
+        for (int i = 0; i < localContainerSize; i++ ){
+            if (tempContainer[i] != ""){
+                localContainer.push(tempContainer[i]);
+            }
+        }
+    }
+    
+    return result;
 }
 
 
-void StaticSemantics::insert(string variable){
-    globalContainer.push_back(variable);
-    
+void StaticSemantics::insert(string variable, bool inBlock){
+    if (!inBlock) {
+        globalContainer.push_back(variable);
+    } else {
+        localContainer.push(variable);
+    }
 }
 
 //returns true if variable found in the container
@@ -51,6 +95,9 @@ bool StaticSemantics::verify(string variable){
 
 
 void StaticSemantics::Run(node* tree){
+//    find("4");
+//    find("1");
+//    find("6");
     traverseTree(tree, 0);
     
     cout << "Static Semantics.  No Errors" << endl;
@@ -67,12 +114,24 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
         depth++;
     }
     
-    if (tree->nodeLabel == "vars"){
-        if (DEVMODE) cout << "Checking if Variable Exists In Scope" << endl;
+    //are we in a block?
+    if (tree->nodeLabel == "block"){
+        if (DEVMODE) cout << "Entered a block." << endl;
+        inBlock = true;
         
-        if (!verify(tree -> token1.tokenInstance)){
+    }
+    
+    if (inBlock) {
+        if (tree->nodeLabel == "vars"){
+           if (DEVMODE) cout << "Checking if Variable Exists In Local Scope" << endl;
+        }
+    }
+    
+    if (tree->nodeLabel == "vars"){
+        if (DEVMODE) cout << "Checking if Variable Exists In Global Scope" << endl;
+          if (!verify(tree -> token1.tokenInstance)){
             if (DEVMODE) cout << "Variable did not exist, adding to container" << endl;
-            insert(tree-> token1.tokenInstance);
+            insert(tree-> token1.tokenInstance, false);
             if (DEVMODE) cout << globalContainer.back() << " added." << endl;
         } else {
             cout << "Error: redefination of " << tree-> token1.tokenInstance << ".  Exiting." << endl;
@@ -80,6 +139,7 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
         }
              
     }
+    
     
     if (tree->nodeLabel != "vars"){
         if (tree->token1.tokenID == identifierToken && tree->token1.tokenInstance != ""){
@@ -93,6 +153,8 @@ void StaticSemantics::traverseTree(node *tree, int depth) {
         }
             
     }
+    
+    
     
 
     if (DEVMODE) cout << "Checking child 1." << endl;

@@ -22,6 +22,7 @@ struct node {
     node *child1, *child2, *child3, *child4;
     token_t token1;
     token_t token2;
+    int counter = 0;
 
 };
 

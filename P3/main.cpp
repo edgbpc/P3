@@ -74,9 +74,11 @@ int main(int argc, const char * argv[]) {
  //    myTestScanner.runTestScanner(fileToRead);
      // node *root = new node;
       tree = myParser.parser();
-            
+
  }
     statSem.Run(tree);
+    
+   
     
     fileToRead.close();
     
