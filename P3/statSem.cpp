@@ -17,7 +17,7 @@
 #include "token.h"
 
 
-const int DEVMODE = 1;
+const int DEVMODE = 0;
 
 
 //reference https://www.geeksforgeeks.org/vector-in-cpp-stl/
